@@ -1,0 +1,17 @@
+{
+  "name": "mono-repo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev:frontend":"pnpm --filter frontend dev",
+    "dev:backend":"pnpm --filter backend dev",
+    "dev":"pnpm run dev:frontend & pnpm run dev:backend",
+    "build":"pnpm recursive run build",
+    "test":"pnpm --filter backend test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.6.1"
+}
