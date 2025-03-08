@@ -4,14 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev:frontend":"pnpm --filter frontend dev",
-    "dev:backend":"pnpm --filter backend dev",
-    "dev":"pnpm run dev:frontend & pnpm run dev:backend",
-    "build":"pnpm recursive run build",
-    "test":"pnpm --filter backend test"
+    "dev:frontend": "pnpm --filter frontend dev",
+    "dev:backend": "pnpm --filter backend dev",
+    "dev": "pnpm run dev:frontend & pnpm run dev:backend",
+    "build": "pnpm recursive run build",
+    "test": "pnpm --filter backend test"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.6.1"
+  "packageManager": "pnpm@10.6.1",
+  "dependencies": {
+    "@tailwindcss/vite": "^4.0.12",
+    "tailwindcss": "^4.0.12"
+  }
 }
