@@ -1,11 +1,12 @@
 import { boolean } from "drizzle-orm/pg-core";
 import { primaryKey } from "drizzle-orm/pg-core";
 import { timestamp } from "drizzle-orm/pg-core";
-import { text, pgTable, varchar } from "drizzle-orm/pg-core";
+import { text, pgTable } from "drizzle-orm/pg-core";
 
 export const users = pgTable("users", {
   id: text().primaryKey().notNull(),
-  username: varchar({ length: 255 }).notNull(),
+  username: text().notNull(),
+  email:text().notNull(),
   created_at:timestamp().defaultNow()
 });
 

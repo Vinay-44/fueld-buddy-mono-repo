@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import {ref} from 'vue';
-    
+    import {} from '@mono-repo/firebase'
     import Input from '../components/Input.vue';
     import Button from '../components/Button.vue';
     const username = ref();

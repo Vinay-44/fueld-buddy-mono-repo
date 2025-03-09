@@ -2,9 +2,10 @@ import { FastifyReply, FastifyRequest } from "fastify"
 // import { todos } from "../db/schema";
 // import { db } from "../db";
 // import { eq } from "drizzle-orm";
-
-
-
+interface TodoBody {
+    title: string;
+    isCompleted: boolean;
+}
 export const getTodos = async function (request:FastifyRequest, reply:FastifyReply) {
   // const userId = !request.user.id;
 
@@ -13,7 +14,8 @@ export const getTodos = async function (request:FastifyRequest, reply:FastifyRep
     reply.send( {todos:[]})
   }
 
-export const postTodos = async function (request:FastifyRequest, reply:FastifyReply) {
+export const postTodos = async function (request:FastifyRequest<{Body:TodoBody}>, reply:FastifyReply) {
+
     return {todos:[{id:1,title:'todo1'},{id:2,title:'todo2'}]}
   }
 

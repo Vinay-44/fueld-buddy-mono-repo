@@ -15,6 +15,20 @@
       "when": 1741460937890,
       "tag": "0001_tearful_wrecking_crew",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1741473964536,
+      "tag": "0002_useful_the_hand",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1741474335496,
+      "tag": "0003_lively_ghost_rider",
+      "breakpoints": true
     }
   ]
 }
