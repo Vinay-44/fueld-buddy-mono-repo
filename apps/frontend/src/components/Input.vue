@@ -17,5 +17,5 @@
 </script>
 
 <template>
-    <input :value="modelValue" v-on:input="$emit('update:modelValue', $event.target.value)" :placeholder="placeholder" class="p-2 outline rounded-2xl"/>
+    <input :value="modelValue" v-on:input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)" :placeholder="placeholder" class="p-2 outline rounded-2xl"/>
 </template>

@@ -37,7 +37,7 @@
                     position:'top',
                     duration:1000
                 })
-                await new Promise((res,rej)=>setTimeout(()=>res(),1000))
+                await new Promise<void>((res)=>setTimeout(()=>res(),1000))
                 router.push('/login')
             }
 

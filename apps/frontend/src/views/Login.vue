@@ -42,7 +42,7 @@
                     email:sendReq.data.login.email
                 })
                 localStorage.setItem("token", sendReq.data.login.stsTokenManager.accessToken);
-                await new Promise((res,rej)=>setTimeout(()=>res(),1000))
+                await new Promise<void>((res)=>setTimeout(()=>res(),1000))
                 router.push('/dashboard')
             }
         } catch (error) {

@@ -5,12 +5,19 @@
     import axios from 'axios';
     import {useUserStore} from '../store/store.ts';
     import {onMounted} from 'vue'
-    import Dialog from 'primevue/dialog';
     import {useToast} from 'vue-toast-notification';
     import 'vue-toast-notification/dist/theme-sugar.css';
 
 
-    const tasks = ref<string[]>([]);
+    type Todos = {
+        id:string;
+        title:string;
+        isCompleted:boolean;
+        created_at:Date;
+        updated_at:Date;
+        user_id:string;
+    }
+    const tasks = ref<Todos[]>([]);
     const newTask = ref<string>('');
     const store = useUserStore();
     const visible = ref<boolean>(false);
@@ -61,12 +68,9 @@
         }
     }
 
-    const handleUpdate = (id)=>{
-        console.log(id);
-        
-    }
+   
 
-    const toggleShare = (id)=>{
+    const toggleShare = (id:string)=>{
         visible.value = !visible.value
         taskId.value = id
     }
