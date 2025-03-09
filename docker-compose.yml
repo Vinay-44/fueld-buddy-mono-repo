@@ -9,3 +9,11 @@ services:
       POSTGRES_DB: todos
     ports:
       - 5432:5432
+  application:
+    build:
+      context: .
+    depends_on:
+      - postgres
+    ports:
+      - 3000:3000
+      - 5173:5173

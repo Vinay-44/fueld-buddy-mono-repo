@@ -2,7 +2,7 @@ import { FastifyReply, FastifyRequest } from "fastify"
 import { db } from "../db";
 import { todos, todosUsers, users } from "../db/schema";
 import { randomUUID } from "crypto";
-import { eq, ne } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 // import { todos } from "../db/schema";
 // import { db } from "../db";
 // import { eq } from "drizzle-orm";

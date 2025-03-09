@@ -1,31 +1,33 @@
 FROM node:18-alpine AS base
+
 WORKDIR /app
+RUN npm i -g pnpm
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+RUN pnpm install 
 
-COPY package.json pnpm-lock.yaml ./ 
-RUN corepack enable && pnpm install --frozen-lockfile
-
-FROM base AS backend
 WORKDIR /app/apps/backend
 
-COPY packages ./packages
-COPY apps/backend ./ 
+COPY apps/backend .
 
-RUN pnpm install --frozen-lockfile
-
-EXPOSE 3000
-
-CMD ["pnpm", "start"]
+RUN pnpm install
 
 
-FROM base AS frontend
+
+WORKDIR /app/packages/firebase
+COPY packages/firebase .
+
+RUN pnpm install
+
 WORKDIR /app/apps/frontend
 
-COPY apps/frontend ./
-COPY packages ./packages
+COPY apps/frontend .
 
 RUN pnpm install 
 RUN pnpm run build  
 
-EXPOSE 5173
+WORKDIR /app
+RUN pnpm --filter firebase run build
 
-CMD ["pnpm", "preview"]
+EXPOSE 5173
+EXPOSE 3000
+CMD ["pnpm", "run","dev"]
