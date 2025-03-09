@@ -1,2 +1,32 @@
-node_modules
+# Ignore all node_modules directories
+node_modules/
+**/node_modules/
+
+# Ignore all .env files
 .env
+**/.env
+
+# Specific environment files
+/apps/backend/.env
+/packages/firebase/.env
+
+# Common build directories
+**/dist/
+**/build/
+**/.next/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Operating System Files
+.DS_Store
+Thumbs.db
