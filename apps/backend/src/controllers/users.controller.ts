@@ -18,7 +18,7 @@ export const registerUser = async(request:FastifyRequest<{Body:UserBody}>, reply
     try {
         const {email,password,username} = request.body;
         if(!email || !password || !username){
-            reply.send({error:'Please provide all the fields'})
+            reply.status(400).send({error:'Please provide all the fields'})
             return;
         }
         
@@ -33,7 +33,9 @@ export const registerUser = async(request:FastifyRequest<{Body:UserBody}>, reply
 
         reply.send({message:'User registered successfully'})
     } catch (error) {
-        reply.send({error:error})
+        console.log(error);
+        
+        reply.status(500).send({error:error})
     }
 }
 
@@ -49,7 +51,10 @@ export const loginUser = async(request:FastifyRequest<{Body:UserLoginBody}>, rep
 
         const login  = await signInWithEmailAndPassword(auth,email,password);
 
-        reply.send({message:'Login Successful',login})
+        const getUser = await db.select().from(users).where(eq(users.id,login.user.uid))
+
+        const addedUsername = getUser.map((user)=>({...user,...login.user}))
+        reply.send({message:'Login Successful',login:addedUsername[0]})
     } catch (error) {
         reply.status(400).send({error:error})
     }
@@ -67,7 +72,7 @@ export const getMyDetails = async(request:FastifyRequest,reply:FastifyReply)=>{
             reply.status(400).send({error:'User not found'})
             return;
         }
-        
+
         const addedUsername = getUser.map((user)=>({...user,...request.user}))
         reply.send({user:addedUsername[0]})
     } catch (error) {
