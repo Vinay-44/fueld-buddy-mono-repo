@@ -15,6 +15,7 @@
   "license": "ISC",
   "packageManager": "pnpm@10.6.1",
   "dependencies": {
+    "@mono-repo/firebase": "link:packages/firebase",
     "@tailwindcss/vite": "^4.0.12",
     "tailwindcss": "^4.0.12"
   }
